@@ -97,12 +97,39 @@
 }
 </style>
 
-</head>
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+</head>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Register User</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Please make sure you have checked the details before submitting the form.</p>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" onclick="addSection();" class="btn btn-success" data-dismiss="modal">Yes</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 <div class="container register">
                 <div class="row">
@@ -115,7 +142,7 @@
                     <div class="col-md-9 register-right">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3 class="register-heading">Login to Test Project</h3>
+                                <h3 class="register-heading">Register to Test Project</h3>
                                 <div class="row register-form">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -161,7 +188,7 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
                                         </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                        <input data-target="#confirmRegister" type="submit" class="btnRegister"  value="Register"/>
                                     </div>
                                 </div>
                             </div>
@@ -211,3 +238,9 @@
                 </div>
 
             </div>
+
+<script>
+    $(document).ready(function(){
+        $('#myModal').modal('show');
+    });
+</script>
