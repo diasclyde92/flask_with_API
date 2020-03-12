@@ -1,239 +1,216 @@
 <head>
 <style>
     .register{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-    margin-top: 3%;
-    padding: 3%;
-}
-.register-left{
-    text-align: center;
-    color: #fff;
-    margin-top: 4%;
-}
-.register-left input{
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    width: 60%;
-    background: #f8f9fa;
-    font-weight: bold;
-    color: #383d41;
-    margin-top: 30%;
-    margin-bottom: 3%;
-    cursor: pointer;
-}
-.register-right{
-    background: #f8f9fa;
-    border-top-left-radius: 10% 50%;
-    border-bottom-left-radius: 10% 50%;
-}
-.register-left img{
-    margin-top: 15%;
-    margin-bottom: 5%;
-    width: 25%;
-    -webkit-animation: mover 2s infinite  alternate;
-    animation: mover 1s infinite  alternate;
-}
-@-webkit-keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-@keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-.register-left p{
-    font-weight: lighter;
-    padding: 12%;
-    margin-top: -9%;
-}
-.register .register-form{
-    padding: 10%;
-    margin-top: 10%;
-}
-.btnRegister{
-    float: right;
-    margin-top: 10%;
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    background: #0062cc;
-    color: #fff;
-    font-weight: 600;
-    width: 50%;
-    cursor: pointer;
-}
-.register .nav-tabs{
-    margin-top: 3%;
-    border: none;
-    background: #0062cc;
-    border-radius: 1.5rem;
-    width: 28%;
-    float: right;
-}
-.register .nav-tabs .nav-link{
-    padding: 2%;
-    height: 34px;
-    font-weight: 600;
-    color: #fff;
-    border-top-right-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem;
-}
-.register .nav-tabs .nav-link:hover{
-    border: none;
-}
-.register .nav-tabs .nav-link.active{
-    width: 100px;
-    color: #0062cc;
-    border: 2px solid #0062cc;
-    border-top-left-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
-}
-.register-heading{
-    text-align: center;
-    margin-top: 8%;
-    margin-bottom: -15%;
-    color: #495057;
-}
+        background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+        margin-top: 3%;
+        padding: 3%;
+    }
+    .register-left{
+        text-align: center;
+        color: #fff;
+        margin-top: 4%;
+    }
+    .register-left input{
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        width: 60%;
+        background: #f8f9fa;
+        font-weight: bold;
+        color: #383d41;
+        margin-top: 30%;
+        margin-bottom: 3%;
+        cursor: pointer;
+    }
+    .register-right{
+        background: #f8f9fa;
+        border-top-left-radius: 10% 50%;
+        border-bottom-left-radius: 10% 50%;
+    }
+    .register-left img{
+        margin-top: 15%;
+        margin-bottom: 5%;
+        width: 25%;
+        -webkit-animation: mover 2s infinite  alternate;
+        animation: mover 1s infinite  alternate;
+    }
+    @-webkit-keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+    @keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+    .register-left p{
+        font-weight: lighter;
+        padding: 12%;
+        margin-top: -9%;
+    }
+    .register .register-form{
+        padding: 10%;
+        margin-top: 10%;
+    }
+    .btnRegister{
+        float: right;
+        margin-top: 10%;
+        border: none;
+        border-radius: 1.5rem;
+        padding: 2%;
+        background: #0062cc;
+        color: #fff;
+        font-weight: 600;
+        width: 50%;
+        cursor: pointer;
+    }
+    .register .nav-tabs{
+        margin-top: 3%;
+        border: none;
+        background: #0062cc;
+        border-radius: 1.5rem;
+        width: 28%;
+        float: right;
+    }
+    .register .nav-tabs .nav-link{
+        padding: 2%;
+        height: 34px;
+        font-weight: 600;
+        color: #fff;
+        border-top-right-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+    }
+    .register .nav-tabs .nav-link:hover{
+        border: none;
+    }
+    .register .nav-tabs .nav-link.active{
+        width: 100px;
+        color: #0062cc;
+        border: 2px solid #0062cc;
+        border-top-left-radius: 1.5rem;
+        border-bottom-left-radius: 1.5rem;
+    }
+    .register-heading{
+        text-align: center;
+        margin-top: 8%;
+        margin-bottom: -15%;
+        color: #495057;
+    }
+    .markCompulsoryFields {
+        border: red 2px solid;
+    }
 </style>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
+<!-- The Confirmation Modal -->
+<div class="modal" id="confirmRegister">
+<div class="modal-dialog">
+  <div class="modal-content">
 
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Register User</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <p>Please make sure you have checked the details before submitting the form.</p>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-            <button type="button" onclick="addSection();" class="btn btn-success" data-dismiss="modal">Yes</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        </div>
-
-      </div>
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h4 class="modal-title">Register User</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
+
+    <!-- Modal body -->
+    <div class="modal-body">
+      <p>Please make sure you have checked the details before submitting the form.</p>
+    </div>
+
+    <!-- Modal footer -->
+    <div class="modal-footer">
+        <button type="button" onclick="validateForm();" class="btn btn-success" data-dismiss="modal">Register</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+    </div>
+
   </div>
+</div>
+</div>
 
 <div class="container register">
+                <div class="alert alert-success successMessage" style="display:none;margin-bottom:10px;" role="alert">
+                  User added successfully!
+                </div>
                 <div class="row">
                     <div class="col-md-3 register-left">
                         <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
                         <h3>Welcome</h3>
                         <p>Let's get started!</p>
-                        <input type="submit" name="" value="Login"/><br/>
+                        <input type="button" onclick="openLogin();" value="Login"/><br/>
                     </div>
                     <div class="col-md-9 register-right">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <h3 class="register-heading">Register to Test Project</h3>
-                                <div class="row register-form">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="maxl">
-                                                <label class="radio inline">
-                                                    <input type="radio" name="gender" value="male" checked>
-                                                    <span> Male </span>
-                                                </label>
-                                                <label class="radio inline">
-                                                    <input type="radio" name="gender" value="female">
-                                                    <span>Female </span>
-                                                </label>
+                        <form action="." method="POST">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <h3 class="register-heading">Register to Test Project</h3>
+                                    <div class="row register-form">
+                                        <div class="col-md-6">
+                                            <div class=" form-group">
+                                                <input type="text" id="firstName" class="form-control clearFields firstName" placeholder="First Name *" value="" />
+                                                <span id="error_msg_firstName" class="emptyMessage" style="color:red;">{{empty_message[0]}}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" id="lastName" class="form-control lastName clearFields" placeholder="Last Name *" value="" />
+                                                <span id="error_msg_lastName" class="emptyMessage" style="color:red;">{{empty_message[0]}}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" id="password" class="form-control password clearFields" placeholder="Password *" value="" />
+                                                <span id="error_msg_password" class="emptyMessage" style="color:red;">{{empty_message[0]}}</span>
+                                                <span class="emptyMessage error_msg_PasswordsMatch" style="color:red;">{{passwords_do_not_match}}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" id="confirmPassword" class="form-control confirmPassword clearFields"  placeholder="Confirm Password *" value="" />
+                                                <span id="error_msg_confirmPassword" class="emptyMessage" style="color:red;">{{empty_message[0]}}</span>
+                                                <span class="emptyMessage error_msg_PasswordsMatch" style="color:red;">{{passwords_do_not_match}}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="maxl">
+                                                    <label class="radio inline">
+                                                        <input type="radio" class="gender" name="gender" value="{{gender_array[0]['male']}}" checked>
+                                                        <span> Male </span>
+                                                    </label>
+                                                    <label class="radio inline">
+                                                        <input type="radio" class="gender" name="gender" value="{{gender_array[0]['female']}}">
+                                                        <span>Female </span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email *" value="" />
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" onkeyup="check_duplicate_username();" id="username" class="form-control username clearFields" placeholder="Enter Your Username *" value="" />
+                                                <span id="error_msg_username" class="emptyMessage" style="color:red;">{{empty_message[0]}}</span>
+                                                <input type="hidden" id="name_exists_val" value="1" >
+                                                <span id="name_exists" style="color:red;display:none;">This username already exists</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" id="email" class="form-control email clearFields" placeholder="Your Email *" value="" />
+                                                <span id="error_msg_email" class="emptyMessage" style="color:red;">{{empty_message[0]}}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" id="phone" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control phone clearFields" placeholder="Your Phone *" value="" />
+                                                <span id="error_msg_phone" class="emptyMessage" style="color:red;">{{empty_message[0]}}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" id="dateOfBirth" class="form-control dateOfBirth clearFields" placeholder="Enter Your Date Of Birth *" value="" />
+                                                <span class="emptyMessage" id="error_msg_dateOfBirth" style="color:red;">{{empty_message[0]}}</span>
+                                            </div>
+                                            <input onclick="validateForm()" type="button" class="btnRegister"  value="Register"/>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                <option>What is your Birthdate?</option>
-                                                <option>What is Your old Phone Number</option>
-                                                <option>What is your Pet Name?</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
-                                        </div>
-                                        <input data-target="#confirmRegister" type="submit" class="btnRegister"  value="Register"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <h3  class="register-heading">Apply as a Hirer</h3>
-                                <div class="row register-form">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
-                                        </div>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                <option>What is your Birthdate?</option>
-                                                <option>What is Your old Phone Number</option>
-                                                <option>What is your Pet Name?</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="`Answer *" value="" />
-                                        </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
 
@@ -241,6 +218,133 @@
 
 <script>
     $(document).ready(function(){
-        $('#myModal').modal('show');
+        $("#dateOfBirth").datepicker({
+           changeMonth:true,
+           changeYear:true,
+           yearRange:"-60:+0",
+           dateFormat:"yy-mm-dd",
+           maxDate: '0'
+       });
+       $('.emptyMessage').hide();
     });
+
+    function openLogin() {
+        window.open(location.origin+'/login/',"_self");
+    }
+
+    function clearMarking() {
+        $('.clearFields').removeClass('markCompulsoryFields');
+        $('.emptyMessage').hide();
+    }
+
+    function registerUser() {
+      var gender = "";
+      ( $('input[name="gender"]:checked').val() == 1 ? gender = 'MALE' : gender = 'FEMALE' );
+      $.ajax({
+        url : location.origin+'/api/v1/users/',
+        contentType: "application/json",
+        dataType: "json",
+        type : 'POST',
+        data : JSON.stringify({
+            'username' : $('#username').val(),
+            'password' : $('#password').val(),
+            'name': {
+                'firstName' : $('#firstName').val(),
+                'lastName' : $('#lastName').val(),
+            },
+            'email' : $('#email').val(),
+            'contact' : $('#phone').val(),
+            'date_of_birth' : $('#dateOfBirth').val(),
+        }),
+        success : function(data) {
+            $(".successMessage").show().delay(4000).fadeOut();
+            $('.clearFields').find('input').val('');
+        },
+        error : function(request,error)
+        {
+          console.log(request);
+        }
+      });
+    }
+
+    function check_duplicate_username() {
+      $.ajax({
+        url : location.origin+'/api/v1/users/check-duplicate-username/',
+        contentType: "application/json",
+        dataType: "json",
+        type : 'POST',
+        data : JSON.stringify({
+            'username' : $('#username').val().trim()
+        }),
+        success : function(data) {
+            if(data['status']==201) {
+                $('#name_exists').show();
+                $('#name_exists_val').val(1);
+            } else {
+                $('#name_exists').hide();
+                $('#name_exists_val').val(2);
+            }
+        },
+        error : function(request,error)
+        {
+          console.log(request);
+        }
+      });
+    }
+
+    function validateForm() {
+        clearMarking();
+        var hasEmptyFields = 2;
+        if( !$.trim($('#firstName').val()) ) {
+            hasEmptyFields = 1;
+            $('.firstName').addClass('markCompulsoryFields');
+            $('#error_msg_firstName').show();
+        }
+        if( !$.trim($('#lastName').val()) ) {
+            hasEmptyFields = 1;
+            $('.lastName').addClass('markCompulsoryFields');
+            $('#error_msg_lastName').show();
+        }
+        if( !$.trim($('#password').val()) ) {
+            hasEmptyFields = 1;
+            $('.password').addClass('markCompulsoryFields');
+            $('#error_msg_password').show();
+        }
+        if( !$.trim($('#confirmPassword').val()) ) {
+            hasEmptyFields = 1;
+            $('.confirmPassword').addClass('markCompulsoryFields');
+            $('#error_msg_confirmPassword').show();
+        }
+        if( !$.trim($('#username').val()) ) {
+            hasEmptyFields = 1;
+            $('.username').addClass('markCompulsoryFields');
+            $('#error_msg_username').show();
+        }
+        if( !$.trim($('#email').val()) ) {
+            hasEmptyFields = 1;
+            $('.email').addClass('markCompulsoryFields');
+            $('#error_msg_email').show();
+        }
+        if( !$.trim($('#phone').val()) ) {
+            hasEmptyFields = 1;
+            $('.phone').addClass('markCompulsoryFields');
+            $('#error_msg_phone').show();
+        }
+        if( !$.trim($('#dateOfBirth').val()) ) {
+            hasEmptyFields = 1;
+            $('.dateOfBirth').addClass('markCompulsoryFields');
+            $('#error_msg_dateOfBirth').show();
+        }
+        if (hasEmptyFields==1) {
+            $('#emptyFields').modal();
+        } else {
+            if( $.trim($('#password').val()) == $.trim($('#confirmPassword').val()) ) {
+                clearMarking();
+                registerUser();
+            } else {
+                $('.error_msg_PasswordsMatch').show();
+            }
+        }
+    }
+
 </script>

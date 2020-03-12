@@ -119,3 +119,33 @@ def delete_users(data):
             'message': "message"
         }
         return response_object
+
+def check_duplicate_username(data):
+    conditions = {"username": {"$regex": "^"+str(data['username'])+"$", "$options": "i"} }
+    try:
+        dataset = Users.objects.aggregate(*[
+            {"$match": conditions},
+            {"$project":
+                {
+                    "username": 1,
+                }
+            }
+        ])
+        details = list(dataset)
+        if details:
+            response_object = {
+                'status': Const.SUCCESS_CODE,
+                'message': 'Username Exists'
+            }
+        else:
+            response_object = {
+                'status': Const.FAILURE_CODE,
+                'message': 'Username Does Not Exists'
+            }
+        return response_object
+    except Exception as e:
+        response_object = {
+            'status': Const.FAIL,
+            'message': e
+        }
+    return response_object

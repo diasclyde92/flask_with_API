@@ -10,21 +10,21 @@ class Config:
 class LocalConfig(Config):
     TESTING = True
     DEBUG = True
-    MONGODB_SETTINGS = {'DB': 'hackathon_local'}
+    MONGODB_SETTINGS = {'DB': 'test_local'}
     SECRET_KEY = 'flask+mongoengine=<3'
 
 
 class DevelopmentConfig(Config):
     TESTING = True
     DEBUG = True
-    MONGODB_SETTINGS = {'DB': 'hackathon_dev'}
+    MONGODB_SETTINGS = {'DB': 'test_dev'}
     SECRET_KEY = 'flask+mongoengine=<3'
 
 
 class TestingConfig(Config):
     DEBUG = False
     TESTING = True
-    MONGODB_SETTINGS = {'DB': 'hackathon_test'}
+    MONGODB_SETTINGS = {'DB': 'test_test'}
     SECRET_KEY = 'flask+mongoengine=<3'
 
 

@@ -3,6 +3,23 @@ import base64
 from flask_restplus import reqparse
 from flask_restplus import fields
 import datetime, os
+from app.main import bcrypt
+import random
+
+
+def gen_salt():
+    salt = str(os.urandom(random.randint(14, 18))).lstrip('b')
+    return salt
+
+
+def hash_password(password_string, salt):
+    hash_pwd = bcrypt.generate_password_hash(salt + password_string)
+    return hash_pwd
+
+
+def verify_password(provided, password_hash, salt):
+    return bcrypt.check_password_hash(password_hash, salt + provided)
+
 
 
 class Const():
@@ -18,6 +35,16 @@ class Const():
     parser.add_argument('page', type=int, required=False)
     parser.add_argument('per_page', type=int, required=False, choices=[5, 10, 20, 30, 40, 50])
     parser.add_argument('publicId', type=str, required=False)
+    MALE = 'MALE'
+    FEMALE = 'FEMALE'
+    EMPTY_MESSAGE = 'This field cannot be left empty'
+    PASSWORDS_DO_NOT_MATCH = 'Passwords Do not match'
+
+    # Message Constants
+    SUCCESS = 'SUCCESS'
+    FAIL = 'FAIL'
+    SUCCESS_CODE = 201
+    FAILURE_CODE = 400
 
 class TimeFormat(fields.DateTime):
     def format(self, value):
@@ -48,7 +75,6 @@ const_by_name = dict(
     test=TestingConst,
     prod=ProductionConst
 )
-
 
 def init_configs(env, app):
     env = 'dev'
