@@ -10,11 +10,21 @@
 from app.main.model.users import Users
 import uuid
 from app.main.service.constants import *
+from app.main import bcrypt
 
+def gen_salt():
+    salt = str(os.urandom(random.randint(14, 18))).lstrip('b')
+    return salt
+
+
+def hash_password(passwordString, salt):
+    hhash = bcrypt.generate_password_hash(salt + passwordString)
+    return hhash
 
 def insert_users(data):
     try:
-        print(data)
+        salt = gen_salt()
+        data['password'] = hash_password(data['password'], salt)
         data['publicId'] = uuid.uuid4()
         try:
             Users(**data).save()
