@@ -11,6 +11,7 @@ from app.main.model.users import Users
 import uuid
 from app.main.service.constants import *
 from app.main import bcrypt
+from flask_jwt_extended import create_access_token
 
 def gen_salt():
     salt = str(os.urandom(random.randint(14, 18))).lstrip('b')
@@ -21,11 +22,61 @@ def hash_password(passwordString, salt):
     hhash = bcrypt.generate_password_hash(salt + passwordString)
     return hhash
 
+def verify_password(provided, passwordHash, salt):
+    return bcrypt.check_password_hash(passwordHash, salt + provided)
+
+def generate_active_token(public_id):
+    try:
+        identity = {
+            'publicId': public_id,
+        }
+        access_token = create_access_token(expires_delta=False, identity=identity)
+        return access_token
+    except Exception as e:
+        return e
+
+def login(data):
+    data_set = Users.objects.aggregate(*[
+            {"$match": {"username": data['username'].upper()}},
+            {"$project": {
+                'publicId': 1,
+                'password': 1,
+                'passwordSalt': 1,
+            }
+            }
+        ])
+    details_user = list(data_set)
+    if len(details_user) > 0:
+        verify = verify_password(data['password'], details_user[0]['password'].encode('utf-8'),
+                                 details_user[0]['passwordSalt'])
+        if not verify:
+            response_object = {
+                'status': Const.FAIL,
+                'message': 'Incorrect username or password.'
+            }
+            return response_object
+        else:
+            token = generate_active_token(str(details_user[0]['publicId']))
+            response_object = {
+                'status': Const.SUCCESS,
+                'publicId': str(details_user[0]['publicId']),
+                'token': token,
+                'message': 'Successfully logged in.'
+            }
+            return response_object, Const.SUCCESS_CODE
+    else:
+        response_object = {
+            'status': Const.FAIL,
+            'message': 'Incorrect username or password.'
+        }
+    return response_object, Const.FAILURE_CODE
+
 def insert_users(data):
     try:
         salt = gen_salt()
         data['password'] = hash_password(data['password'], salt)
         data['publicId'] = uuid.uuid4()
+        data['passwordSalt'] = gen_salt()
         try:
             Users(**data).save()
         except Exception as e:
