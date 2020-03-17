@@ -31,7 +31,7 @@
 
 <body>
     <div id="login">
-        <h3 class="text-center text-white pt-5">Login form</h3>
+        <h3 class="text-center text-white pt-5"></h3>
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
@@ -41,17 +41,19 @@
                             <div class="form-group">
                                 <label for="username" class="text-info">Username:</label><br>
                                 <input type="text" name="username" id="username" class="form-control">
+                                <span style="visibility:hidden;" id="error_msg_username" class="emptyMessage" style="color:red;">{{empty_message[0]}}</span>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Password:</label><br>
                                 <input type="text" name="password" id="password" class="form-control">
+                                <span style="visibility:hidden;" id="error_msg_password" class="emptyMessage" style="color:red;">{{empty_message[0]}}</span>
                             </div>
                             <div class="form-group">
                                 <label style="visibility:hidden;" for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                                <input onclick="validateForm()" type="submit" name="submit" class="btn btn-info btn-md" value="button">
+                                <input style="margin-top:-60px;" onclick="validateForm()" type="button" name="submit" class="btn btn-info btn-md" value="Login">
                             </div>
                             <div id="register-link" class="text-right">
-                                <a href="#" class="text-info">Register here</a>
+                                <a href="#" onclick="register()" class="text-info">Register here</a>
                             </div>
                         </form>
                     <</div>
@@ -61,5 +63,55 @@
     </div>
 </body>
 <script>
-    alert();
+
+    function clearMarking() {
+        $('.clearFields').removeClass('markCompulsoryFields');
+        $('.emptyMessage').hide();
+    }
+
+    function validateForm() {
+        clearMarking();
+        var hasEmptyFields = 2;
+        if( !$.trim($('#username').val()) ) {
+            hasEmptyFields = 1;
+            $('.username').addClass('markCompulsoryFields');
+            $('#error_msg_username').show();
+        }
+        if( !$.trim($('#password').val()) ) {
+            hasEmptyFields = 1;
+            $('.password').addClass('markCompulsoryFields');
+            $('#error_msg_password').show();
+        }
+        if (hasEmptyFields==1) {
+            $('#emptyFields').modal();
+        } else {
+            clearMarking();
+            checkLogin();
+        }
+    }
+
+    function checkLogin() {
+      $.ajax({
+        url : location.origin+'/api/v1/users/check-login/',
+        contentType: "application/json",
+        dataType: "json",
+        type : 'POST',
+        data : JSON.stringify({
+            'username' : $('#username').val(),
+            'password' : $('#password').val(),
+        }),
+        success : function(data) {console.log(data);
+            $(".successMessage").show().delay(4000).fadeOut();
+            $('.clearFields').find('input').val('');
+        },
+        error : function(request,error)
+        {
+          console.log(request);
+        }
+      });
+    }
+
+    function register() {
+        window.open(location.origin+'/register/',"_self")
+    }
 </script>

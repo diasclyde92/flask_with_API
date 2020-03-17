@@ -35,7 +35,7 @@ def generate_active_token(public_id):
     except Exception as e:
         return e
 
-def login(data):
+def check_login(data):
     data_set = Users.objects.aggregate(*[
             {"$match": {"username": data['username'].upper()}},
             {"$project": {

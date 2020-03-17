@@ -56,3 +56,7 @@ class UsersDto:
         'username': fields.String(),
     })
 
+    UserLogin = api.model('UserLogin', {
+        'username': fields.String(),
+        'password': fields.String(),
+    })

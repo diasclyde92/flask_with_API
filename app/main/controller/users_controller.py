@@ -8,7 +8,7 @@
 """
 
 from ..service.users_service import insert_users, fetch_users, update_users, \
-                                           delete_users,check_duplicate_username
+                                           delete_users,check_duplicate_username, check_login
 
 from ..util.users_dto import UsersDto
 from app.main.service.constants import *
@@ -24,6 +24,7 @@ _fetch_users = UsersDto.UsersGet
 _update_users = UsersDto.UsersPut
 _delete_users = UsersDto.UsersDelete
 _check_duplicate_username = UsersDto.UserCheckDuplicateUsername
+_check_login = UsersDto.UserLogin
 
 @api.route('/')
 class Users(Resource):
@@ -64,3 +65,11 @@ class checkDupUsername(Resource):
         data = request.json
         """Check For Order Number"""
         return check_duplicate_username(data=data)
+
+@api.route('/check-login/')
+class checkLogin(Resource):
+    @api.expect(_check_login, envelope='data')
+    def post(self):
+        data = request.json
+        """Check For Order Number"""
+        return check_login(data=data)

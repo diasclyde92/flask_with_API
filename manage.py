@@ -24,7 +24,8 @@ def navigationMenu():
 
 @app.route('/login/')
 def login():
-   return render_template("login.html")
+   empty_message = [Const.EMPTY_MESSAGE]
+   return render_template("login.html",empty_message=empty_message)
 
 
 if __name__ == '__main__':

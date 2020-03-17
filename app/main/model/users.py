@@ -11,6 +11,7 @@ class Users(mdb.Document):
     publicId = mdb.UUIDField(binary=True)
     username = mdb.StringField()
     password = mdb.StringField()
+    passwordSalt = mdb.StringField()
     name = mdb.EmbeddedDocumentField(Name)
     profile_image = mdb.StringField()
     deleted = mdb.BooleanField()
